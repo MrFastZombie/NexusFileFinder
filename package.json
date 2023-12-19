@@ -1,0 +1,16 @@
+{
+  "name": "nexusfilefinder",
+  "version": "1.0.0",
+  "description": "Finds hidden files for a specified mod on Nexus Mods",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MrFastZombie",
+  "license": "GNU GPLv3",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "inquirer": "^9.2.12"
+  }
+}
