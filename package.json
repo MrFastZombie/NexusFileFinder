@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Finds hidden files for a specified mod on Nexus Mods",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,5 +13,10 @@
     "axios": "^1.6.2",
     "cheerio": "^1.0.0-rc.12",
     "inquirer": "^8.2.5"
+  },
+  "pkg": {
+    "assets": [
+      "node_modules/axios/**"
+    ]
   }
 }
