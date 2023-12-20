@@ -106,6 +106,11 @@ async function main() {
         } //end of if
         
         console.log('Search complete!\nFound the following file IDs: ' + ids);
+        await inquirer.prompt([{
+            name: 'exit',
+            type: 'confirm',
+            message: 'Would you like to exit?',
+        }])
         
     } catch (error) {
         console.error(error);
