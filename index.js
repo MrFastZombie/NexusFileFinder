@@ -1,7 +1,8 @@
-import axios from 'axios';
-import cheerio from 'cheerio';
-import inquirer from 'inquirer';
-import ora from 'ora';
+//Using CJS because pkg still doesn't support ESM... isn't javascript development so fun?
+const axios = require('axios');
+const cheerio = require('cheerio');
+const inquirer = require('inquirer');
+const ora = require('ora');
 
 var file_id;
 const regex = /(?<=(\.(?:7z)|\.(?:zip)|\.(?:rar)))\(.*\)folder/; //Removes folder and mod name after filename.

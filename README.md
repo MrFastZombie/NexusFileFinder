@@ -8,7 +8,7 @@ Do **NOT** bother modders with support requests for versions of mods found with 
 
 Sometimes modders hide older versions of their mods that are compatible with older versions of games. This is often due to an unwillingness to support older versions of their mods. While I am fine with developers not supporting older versions of their mods, I do not think it is reasonable to completely cut off users from older versions. So, I've created this tool to give users a way to bypass these restrictions.
 
-Bypassing archived files has already been done before, but usually required that you know the ID of the file you wish to download. This tool helps find such IDs, as they can be easily lost for smaller mods. 
+Bypassing archived files has already been done before, but usually required that you know the ID of the file you wish to download. This tool helps find such IDs, as they can be easily lost for smaller mods.
 
 # How does it work?
 
@@ -24,7 +24,7 @@ Executables from the releases section do not have requirements.
 
 # Compilation
 
-If you want to compile the program yourself and do not wish to run it with node directly, install pkg with `npm i pkg -g` and then run `pkg package.json` in the program's directory.
+If you want to compile the program yourself and do not wish to run it with node directly, install pkg with `npm i pkg -g` and then run `npm run build` in the program's directory.
 
 # Usage
 
