@@ -1,21 +1,24 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const inquirer = require('inquirer');
+import axios from 'axios';
+import cheerio from 'cheerio';
+import inquirer from 'inquirer';
+import ora from 'ora';
 
 var file_id;
+const regex = /(?<=(\.(?:7z)|\.(?:zip)|\.(?:rar)))\(.*\)folder/; //Removes folder and mod name after filename.
 
-async function checkFile(game, mod, i) {
+async function checkFile(game, mod, i, spinner) {
     file_id = await axios.get('https://www.nexusmods.com/'+game+'/mods/'+mod+'?tab=files&file_id='+i).catch(err => console.error('Axios error: ' +err));
             let $ = cheerio.load(file_id.data);
             if($('div.header').text() != '') {
-                console.log($('div.header').text());
-                console.log('this file exists! id: ' + i);
+                spinner.succeed($('div.header').text().replace(regex, '') + ' | This file exists! id: '+i)
+                spinner.start('Checking files...');
                 return i;
             }
             else {
                 //console.log('file ID ' + i + ' does not exist!');
                 if(i % 100 === 0) { //Update the user every 100 files to show progress is being made.
-                    console.log('progress update: currently on file id ' + i);
+                    spinner.info('Reached file id ' + i);
+                    spinner.start('Checking files...');
                 }
                 return null;
             }
@@ -99,24 +102,26 @@ async function main() {
         }
     
         let ids = [];
+        const spinner = ora('Checking files...').start();
 
         if(direction.direction === 'up') {
-            for(i = startingID.startingID; i <= startingID.startingID+checkAmount.checkAmount; i++) {
-                let checkedFile = await checkFile(game.game, modID.modID, i);
+            for(let i = startingID.startingID; i <= startingID.startingID+checkAmount.checkAmount; i++) {
+                let checkedFile = await checkFile(game.game, modID.modID, i, spinner);
                 if(checkedFile != null) {
                     ids.push(checkedFile);
                 }
             } //end of for
         } else if(direction.direction === 'down') {
-            for(i = startingID.startingID; i >= startingID.startingID-checkAmount.checkAmount; i--) {
-                let checkedFile = await checkFile(game.game, modID.modID, i);
+            for(let i = startingID.startingID; i >= startingID.startingID-checkAmount.checkAmount; i--) {
+                let checkedFile = await checkFile(game.game, modID.modID, i, spinner);
                 if(checkedFile != null) {
                     ids.push(checkedFile);
                 }
             } //end of for
         } //end of if
         
-        console.log('Search complete!\nFound the following file IDs: ' + ids);
+        spinner.info('Found the following file IDs: ' + ids);
+        spinner.succeed('Search complete!');
         await exitPrompt();
         
     } catch (error) {
