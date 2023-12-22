@@ -79,7 +79,7 @@ async function main() {
         }])
     
         //Input validation for mod ID & starting ID & check amount
-        if(isNaN(modID.modID) || isNaN(startingID.startingID || isNaN(checkAmount.checkAmount))) {
+        if(isNaN(modID.modID) || isNaN(startingID.startingID) || isNaN(checkAmount.checkAmount)) {
             console.log('invalid input!');
             await exitPrompt();
             process.exit(0);
