@@ -21,6 +21,14 @@ async function checkFile(game, mod, i) {
             }
 }
 
+async function exitPrompt() {
+    return await inquirer.prompt([{
+        name: 'exit',
+        type: 'confirm',
+        message: 'The process will exit after this prompt.'
+    }]);
+}
+
 async function main() {
     try {
         console.log('Welcome to Nexus File Finder!\nThis program will do a brute force search for hidden files in Nexus Mods.\nPlease ensure you\'ve read the readme on the GitHub page. (https://github.com/MrFastZombie/NexusFileFinder)');
@@ -44,6 +52,7 @@ async function main() {
         const check = await axios.get('https://www.nexusmods.com/'+ game.game).catch(err => console.error('Axios error: ' +err));
         if(check === undefined) {
             console.log('Game does not exist!');
+            await exitPrompt();
             process.exit(0);
         }
     
@@ -68,6 +77,7 @@ async function main() {
         //Input validation for mod ID & starting ID & check amount
         if(isNaN(modID.modID) || isNaN(startingID.startingID || isNaN(checkAmount.checkAmount))) {
             console.log('invalid input!');
+            await exitPrompt();
             process.exit(0);
         }
         
@@ -83,6 +93,7 @@ async function main() {
         if(direction.direction == 'down') {
             if(startingID.startingID - checkAmount.checkAmount < 0) {
                 console.log('Amount of files to check is too high for downwards search!');
+                await exitPrompt();
                 process.exit(0);
             }
         }
@@ -106,11 +117,7 @@ async function main() {
         } //end of if
         
         console.log('Search complete!\nFound the following file IDs: ' + ids);
-        await inquirer.prompt([{
-            name: 'exit',
-            type: 'confirm',
-            message: 'Would you like to exit?',
-        }])
+        await exitPrompt();
         
     } catch (error) {
         console.error(error);
