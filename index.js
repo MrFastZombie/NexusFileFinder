@@ -17,9 +17,8 @@ async function checkFile(game, mod, i, spinner) {
             }
             else {
                 //console.log('file ID ' + i + ' does not exist!');
-                if(i % 100 === 0) { //Update the user every 100 files to show progress is being made.
-                    spinner.info('Reached file id ' + i);
-                    spinner.start('Checking files...');
+                if(i % 10 === 0) { //Update the user every 10 files to show progress is being made.
+                    spinner.start('Checking files (Reached file id ' + i + ')...');
                 }
                 return null;
             }
