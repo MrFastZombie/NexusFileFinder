@@ -10,7 +10,7 @@
     "build": "pkg package.json"
   },
   "author": "MrFastZombie",
-  "license": "GNU GPLv3",
+  "license": "GPL-3.0",
   "dependencies": {
     "axios": "^1.6.2",
     "cheerio": "^1.0.0-rc.12",
