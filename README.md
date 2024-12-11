@@ -1,6 +1,6 @@
 # DISCLAIMERS
 
-This script sends repeated HTTP requests to Nexus Mods. By using this software, you accept the risk that Nexus Mods may block your IP.
+This script sends repeated HTTP requests to Nexus Mods. **By using this software, you accept the risk that Nexus Mods may block your IP.** For context, I've had a tempoary 10 minute IP block from using this.
 
 Do **NOT** bother modders with support requests for versions of mods found with this tool. If a version of a mod is hidden, they likely do not wish to support it. You may have other resources for support but you are basically on your own otherwise.
 
