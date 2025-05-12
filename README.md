@@ -1,3 +1,6 @@
+# READ FIRST: A better way!
+Add `?tab=files&category=archived` to the end of a mod's URL to view the archive page. This repository will remain up.
+
 # DISCLAIMERS
 
 This script sends repeated HTTP requests to Nexus Mods. **By using this software, you accept the risk that Nexus Mods may block your IP.** 
